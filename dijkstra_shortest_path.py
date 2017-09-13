@@ -1,7 +1,7 @@
 # github.com/zaz/dijkstra
 from collections import defaultdict
 
-INFINIT = 1e309  # Моя правка
+INFINITE = 1e309  # Моя правка
 
 
 class Digraph(object):
@@ -13,16 +13,16 @@ class Digraph(object):
     def add_node(self, *nodes):
         [self.nodes.add(n) for n in nodes]
 
-    def add_edge(self, frm, to, d=INFINIT):
+    def add_edge(self, frm, to, d=INFINITE):
         self.add_node(frm, to)
         self.neighbours[frm].add(to)
         self.dist[frm, to] = d
 
-    def dijkstra(self, start, max_d=INFINIT):
+    def dijkstra(self, start, max_d=INFINITE):
         """Returns a map of nodes to distance from start and a map of nodes to
         the neighbouring node that is closest to start."""
         # total distance from origin
-        tdist = defaultdict(lambda: INFINIT)
+        tdist = defaultdict(lambda: INFINITE)
         tdist[start] = 0
         # neighbour that is nearest to the origin
         preceding_node = {}
@@ -43,7 +43,7 @@ class Digraph(object):
 
         return tdist, preceding_node
 
-    def min_path(self, start, end, max_d=INFINIT):
+    def min_path(self, start, end, max_d=INFINITE):
         """Returns the minimum distance and path from start to end."""
         tdist, preceding_node = self.dijkstra(start, max_d)
         dist = tdist[end]
@@ -65,8 +65,7 @@ class Digraph(object):
         return self.min_path(*args)[1]
 
 
-# Мой код
-
+# Мой код:
 def create_graph_with_distances(_graph: "Digraph", distance_data: "list") -> "Digraph":
     n = len(distance_data)
     m = len(distance_data[0])
