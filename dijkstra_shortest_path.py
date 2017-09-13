@@ -1,7 +1,7 @@
 # github.com/zaz/dijkstra
 from collections import defaultdict
 
-INFINIT = 1e309
+INFINIT = 1e309  # Моя правка
 
 
 class Digraph(object):
@@ -26,7 +26,7 @@ class Digraph(object):
         tdist[start] = 0
         # neighbour that is nearest to the origin
         preceding_node = {}
-        unvisited = self.nodes.copy()  # unvisited = self.nodes
+        unvisited = self.nodes.copy()  # Моя правка, было: unvisited = self.nodes
 
         while unvisited:
             current = unvisited.intersection(tdist.keys())
