@@ -59,15 +59,14 @@ def create_path_matrix(adjacency_matrix: "np.ndarray") -> "np.ndarray":
     return path_matrix
 
 
-def build_path(p, i, j):
-    i, j = int(i), int(j)
-    if i == j:
-        print(i, )
-    elif p[i, j] == MINIMAL:
-        print(i, '-', j)
+def build_path(p, start_node, end_node):
+    if start_node == end_node:
+        print(start_node, )
+    elif p[start_node, end_node] == MINIMAL:
+        print(start_node, '-', end_node)  # node are not connected
     else:
-        build_path(p, i, p[i, j])
-        print(j, )
+        build_path(p, start_node, p[start_node, end_node])
+        print(end_node, )
 
 
 test_data_2 = [
@@ -76,17 +75,18 @@ test_data_2 = [
     [2, 1, 4, 101, 3]
 ]
 
-start_node = 0
-end_node = 14
+from_node = 0
+to_node = 14
 
 
 def main():
     a_matrix = create_adjacency_matrix(test_data_2)
-    print(a_matrix)
     p_matrix = create_path_matrix(a_matrix)
+
+    print(a_matrix)
     print(p_matrix)
 
-    build_path(p_matrix, start_node, end_node)
+    build_path(p_matrix, from_node, to_node)
 
 
 if __name__ == "__main__":
