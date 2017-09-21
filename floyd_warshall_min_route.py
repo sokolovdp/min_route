@@ -83,9 +83,6 @@ def main():
     a_matrix = create_adjacency_matrix(test_data_2)
     p_matrix = create_path_matrix(a_matrix)
 
-    print(a_matrix)
-    print(p_matrix)
-
     build_path(p_matrix, from_node, to_node)
 
 
